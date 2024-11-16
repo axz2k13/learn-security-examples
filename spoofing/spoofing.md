@@ -30,5 +30,11 @@ This example demonstrates spoofind through two ways -- Stealing cookies programm
 ## For you to answer
 
 1. Briefly explain the spoofing vulnerability in **insecure.ts**.
+The session secret is stored as an insecure cookie in the browser, meaning that a malicious program running on a client's computer
+can steal it and make requests while pretending to be the original client by using the session secret.
 2. Briefly explain different ways in which vulnerability can be exploited.
+Depending on what the access token allows the client to do, an attacker can use the token to retrieve personal information or execute
+harmful operations on the server.
 3. Briefly explain why **secure.ts** does not have the spoofing vulnerability in **insecure.ts**.
+The secure version marks the cookie as http only and limits the cookie to a single domain, meaning that an attacker can't steal it 
+programatically, and even if they did, it wouldn't be trusted as it would be coming from a different domain.

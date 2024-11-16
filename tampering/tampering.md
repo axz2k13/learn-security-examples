@@ -25,5 +25,10 @@ This example demonstrates tampering through script injection.
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
+The name input field is not validated - although users are expected to enter strings, a malicious attacker can programtatically set
+req.body.name to anything and have the server process it.
 2. Briefly explain how a malicious attacker can exploit them.
+The server eventually evaluates req.body.name as an expression. If this expression turns out to be a chunk of code, it is executed. This
+can be exploited to make the server do basically anything.
 3. Briefly explain why **secure.ts** does not have the same vulnerabilties?
+The incoming data in req.body.name is sanitized, thus strictly ensuring that it is a string and nothing more.
