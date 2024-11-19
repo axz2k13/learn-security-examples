@@ -31,5 +31,8 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts** that can lead to a DoS attack.
+When casting id as a string, if id isn't a string or User.findOne throws an error, there is no catch statement. The _id field needs to match MongoDBs id formatting rules or an error will be thrown.
 2. Briefly explain how a malicious attacker can exploit them.
+If the user provides an invalid id, the uncaught exception will crash the entire server.
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the DoS vulnerability?
+A simple try catch block prevents an error in findOne from crashing the entire server.

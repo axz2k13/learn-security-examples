@@ -31,5 +31,9 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
+In the /userinfo route, a database query is made directly on user input without first sanitizing it. This allows a malicious attacker
+to escape the username query and make any arbitrary query on the database, potentially revealing sensitive info.
 2. Briefly explain how a malicious attacker can exploit them.
+For example, they could query for all usernames or query additional fields like passwords, email addresses, etc.
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the information disclosure vulnerability?
+The security hole is closed by asserting that the query is a string, preventing an attacker from inserting an object to extend the query. A regex also ensure that there are no special characters that can escape the query.
