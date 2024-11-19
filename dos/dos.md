@@ -35,4 +35,4 @@ When casting id as a string, if id isn't a string or User.findOne throws an erro
 2. Briefly explain how a malicious attacker can exploit them.
 If the user provides an invalid id, the uncaught exception will crash the entire server.
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the DoS vulnerability?
-A simple try catch block prevents an error in findOne from crashing the entire server.
+A simple try catch block prevents an error in findOne from crashing the entire server. There is also a rate limiter to prevent request spam from overwhelming the server.
